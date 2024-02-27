@@ -1,6 +1,6 @@
-# Codigo base
+# Ejercicio 1
 
-Desarrollo de actividades universitarias
+Desarrollo de actividad estudiantes
 
 # Autores
 
