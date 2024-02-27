@@ -2,14 +2,13 @@
  * @author Cesar Baquiro Área de programación UQ
  */
 package co.edu.uniquindio.poo;
+import co.edu.Estudiantes;
 
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
-
-import co.edu.Estudiantes;
 
 public class AppTest {
     private static final Logger LOG = Logger.getLogger(AppTest.class.getName());
@@ -20,12 +19,12 @@ public class AppTest {
 
         Estudiantes estudiante = new Estudiantes("123", "Juan", "Perez", "juan@example.com", "123456789", 25);
 
-        assertEquals("123", estudiante.getId());
-        assertEquals("Juan", estudiante.getName());
-        assertEquals("Perez", estudiante.getLastname());
-        assertEquals("juan@example.com", estudiante.getMail());
-        assertEquals("123456789", estudiante.getPhone());
-        assertEquals(25, estudiante.getAge());
+        assertEquals(estudiante.getId(), "123");
+        assertEquals(estudiante.getName(), "Juan");
+        assertEquals(estudiante.getLastname(), "Perez");
+        assertEquals(estudiante.getMail(), "juan@example.com");
+        assertEquals(estudiante.getPhone(), "123456789");
+        assertEquals(estudiante.getAge(), 25);
 
         // Modificar valores usando setters
         estudiante.setId("456");
@@ -36,12 +35,12 @@ public class AppTest {
         estudiante.setAge(30);
 
         // Verificar si los setters han funcionado correctamente
-        assertEquals("456", estudiante.getId());
-        assertEquals("Pedro", estudiante.getName());
-        assertEquals("Gomez", estudiante.getLastname()); // Asegurarse de que el setter de lastname también funciona
-        assertEquals("pedro@example.com", estudiante.getMail());
-        assertEquals("987654321", estudiante.getPhone());
-        assertEquals(30, estudiante.getAge());
+        assertEquals(estudiante.getId(), "456");
+        assertEquals(estudiante.getName(), "Pedro");
+        assertEquals(estudiante.getLastname(), "Gomez"); // Asegurarse de que el setter de lastname también funciona
+        assertEquals(estudiante.getMail(), "pedro@example.com");
+        assertEquals(estudiante.getPhone(), "987654321");
+        assertEquals(estudiante.getAge(), 30);
 
         LOG.info("Finalizando testEstudiantesGetterSetter");
     }
@@ -57,7 +56,7 @@ public class AppTest {
         // Verificar que dos instancias con la misma información son iguales
         assertEquals(estudiante1, estudiante2);
 
-        // Verificar que dos instancias con información diferente no son iguales
+        // Verificar que dos instancias con información diferente no son iguale
         assertNotEquals(estudiante1, estudiante3);
 
         LOG.info("Finalizando testEstudiantesEquals");
