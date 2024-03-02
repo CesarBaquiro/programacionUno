@@ -1,6 +1,6 @@
-package co.edu;
+package co.edu.uniquindio.poo;
 
-public class Mascotas {
+public class Mascota {
 
     // Atributos
     private String nombre;
@@ -14,7 +14,7 @@ public class Mascotas {
 
 
     // Constructor
-    public Mascotas(String nombre, String especie, String raza, String genero, byte edad,  String color,  double peso) {
+    public Mascota(String nombre, String especie, String raza, String genero, byte edad,  String color,  double peso) {
         this.nombre = nombre;
         this.especie = especie;
         this.raza = raza;

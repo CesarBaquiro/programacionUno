@@ -1,11 +1,5 @@
 package co.edu.uniquindio.poo;
 
-/**
- * @author Cesar Baquiro Área de programación UQ
- */
-
-import co.edu.Mascotas;
-
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
