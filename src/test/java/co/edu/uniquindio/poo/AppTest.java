@@ -2,75 +2,101 @@ package co.edu.uniquindio.poo;
 
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+//import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.logging.Logger;
+
 import org.junit.jupiter.api.Test;
+
+import co.edu.uniquindio.poo.Enum.Color;
+import co.edu.uniquindio.poo.Enum.Especie;
+import co.edu.uniquindio.poo.Enum.Genero;
+import co.edu.uniquindio.poo.Enum.Raza;
+
 
 public class AppTest {
     private static final Logger LOG = Logger.getLogger(AppTest.class.getName());
 
+/**
+ * Comprobacion de datos nulos
+ */
+    
     @Test
-    public void testMascotasGetterSetter() {
-        LOG.info("Iniciando testmascotasGetterSetter");
+    public void datosNulos(){
+        LOG.info("Iniciando datosNulos");
+        assertThrows(NullPointerException.class, () -> {
+        Mascota mascota = new Mascota(null, null, null, null, (byte) 0, null, 0);
+        // Cualquier operación que pueda lanzar una excepción aquí
+        });
+        LOG.info("Finalizando datosNulos");
 
-        Mascotas mascota = new Mascotas("Sasuke", "Perro", "Husky", "Macho", (byte)4, "Gris", 20.6);
-
-        assertEquals(mascota.getNombre(), "Sasuke");
-        assertEquals(mascota.getEspecie(), "Perro");
-        assertEquals(mascota.getRaza(), "Husky");
-        assertEquals(mascota.getGenero(), "Macho");
-        assertEquals(mascota.getEdad(), (byte)4);
-        assertEquals(mascota.getColor(), "Gris"); 
-        assertEquals(mascota.getPeso(), 20.6);    
-
-        // Modificar valores usando setters
-        mascota.setNombre("Rodolfo Sasuke");
-        mascota.setEspecie("Perre");
-        mascota.setRaza("Lobo siberiano");
-        mascota.setGenero("Audi TT");
-        mascota.setEdad((byte) 10);
-        mascota.setColor("Blue");
-        mascota.setPeso(30);
-
-        // Verificar si los setters han funcionado correctamente
-        assertEquals(mascota.getNombre(), "Rodolfo Sasuke");
-        assertEquals(mascota.getEspecie(), "Perre"); // Asegurarse de que el setter de Especie también funciona
-        assertEquals(mascota.getRaza(), "Lobo siberiano");
-        assertEquals(mascota.getGenero(), "Audi TT");
-        assertEquals(mascota.getEdad(), (byte)30);
-           assertEquals(mascota.getColor(), "Blue"); 
-        assertEquals(mascota.getPeso(), 30);    
-
-        LOG.info("Finalizando testmascotasGetterSetter");
     }
 
-    @Test
-    public void testMascotasEquals() {
-        LOG.info("Iniciando testmascotasEquals");
-
-        Mascotas mascota1 = new Mascotas("Juan", "Perez", "juan@example.com", "123456789", (byte) 25, "Gris", 20.6);
-        Mascotas mascota2 = new Mascotas( "Juan", "Perez", "juan@example.com", "123456789", (byte) 25, "Gris", 20.6);
-        Mascotas mascota3 = new Mascotas( "Pedro", "Gomez", "pedro@example.com", "987654321", (byte) 30, "Gris", 20.6);
-
-        // Verificar que dos instancias con la misma información son iguales
-        assertEquals(mascota1, mascota2);
-
-        // Verificar que dos instancias con información diferente no son iguale
-        assertNotEquals(mascota1, mascota3);
-
-        LOG.info("Finalizando testmascotasEquals");
-    }
+/**
+ * Comprobacion de datos vacios
+ */
 
     @Test
-    public void testMascotasHashCode() {
-        LOG.info("Iniciando testmascotasHashCode");
+    public void datosVacios(){
+        LOG.info("Iniciando datosVacios");
+       
+        assertThrows(Throwable.class, () -> new Mascota("", null, null , null ,(byte) 0, null, 0));
 
-        Mascotas mascota1 = new Mascotas( "Juan", "Perez", "juan@example.com", "123456789", (byte) 25, "Gris", 20.6);
-        Mascotas mascota2 = new Mascotas("Juan", "Perez", "juan@example.com", "123456789", (byte) 25, "Gris", 20.6);
+        LOG.info("Finalizando datosVacios");
 
-        // Verificar que el hashCode de dos instancias con la misma información es igual
-        assertEquals(mascota1.hashCode(), mascota2.hashCode());
-
-        LOG.info("Finalizando testmascotasHashCode");
     }
+
+/**
+ * Comprobacion de datos completos
+ */
+
+@Test
+    public void testDatosCompletos(){
+        LOG.info("Iniciando testDatosCompletos");
+
+        Mascota mascota = new Mascota("Sasuke", Especie.PERRO, Raza.HUSKY, Genero.MACHO, (byte) 4, Color.GRIS, 20.6);
+
+        assertEquals( "Sasuke", mascota.nombre());
+        assertEquals( Especie.PERRO, mascota.especie());
+        assertEquals( Raza.HUSKY, mascota.raza());
+        assertEquals( Genero.MACHO, mascota.genero());
+        assertEquals((byte)4, mascota.edad());
+        assertEquals( Color.GRIS, mascota.color());
+
+        LOG.info("Finalizando testDatosCompletos");
+    }
+
+    
+/**
+ * Comprobacion de edad negativa
+ */
+
+@Test
+    public void testEdadNegativa(){
+        LOG.info("Iniciando testEdadNegativa");
+        Mascota mascota = new Mascota("Sasuke", Especie.PERRO, Raza.HUSKY, Genero.MACHO, (byte) -4, Color.GRIS, 4.2);
+        assertEquals( "Sasuke", mascota.nombre());
+        assertEquals( Especie.PERRO, mascota.especie());
+        assertEquals( Raza.HUSKY, mascota.raza());
+        assertEquals( Genero.MACHO, mascota.genero());
+        assertEquals((byte)4, mascota.edad(),  "---------------La edad debe ser mayor a 0-----------------------");
+        assertEquals( Color.GRIS, mascota.color());
+
+        LOG.info("Finalizando testEdadNegativa");
+    }
+
+
+    /**
+ * Comprobacion de genero
+ */
+
+    @Test
+    public void testValidarGenero(){
+        LOG.info("Iniciando testEdadNegativa");
+        Mascota mascota = new Mascota("Sasuke", Especie.PERRO, Raza.HUSKY, null, (byte) -4, Color.GRIS, 4.2);
+        assertEquals( Genero.MACHO, mascota.genero(), "--------------Debe ingresar un género------------");
+        LOG.info("Finalizando testEdadNegativa");
+    }
+
 }
