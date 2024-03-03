@@ -15,6 +15,11 @@ import co.edu.uniquindio.poo.Enum.Genero;
 import co.edu.uniquindio.poo.Enum.Raza;
 
 
+/**
+ * Clase AppTest
+ * Contiene los test siguiendo el enfoque TDD
+ */
+
 public class AppTest {
     private static final Logger LOG = Logger.getLogger(AppTest.class.getName());
 
@@ -80,6 +85,7 @@ public class AppTest {
         assertEquals( Especie.PERRO, mascota.especie());
         assertEquals( Raza.HUSKY, mascota.raza());
         assertEquals( Genero.MACHO, mascota.genero());
+        //Mensaje personalizado de error cuando la edad es menor a 0
         assertEquals((byte)4, mascota.edad(),  "---------------La edad debe ser mayor a 0-----------------------");
         assertEquals( Color.GRIS, mascota.color());
 
@@ -95,6 +101,7 @@ public class AppTest {
     public void testValidarGenero(){
         LOG.info("Iniciando testEdadNegativa");
         Mascota mascota = new Mascota("Sasuke", Especie.PERRO, Raza.HUSKY, null, (byte) -4, Color.GRIS, 4.2);
+        //Mensaje personalizado de error cuando el genero no se ingresa
         assertEquals( Genero.MACHO, mascota.genero(), "--------------Debe ingresar un género------------");
         LOG.info("Finalizando testEdadNegativa");
     }

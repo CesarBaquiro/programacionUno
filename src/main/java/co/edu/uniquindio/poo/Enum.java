@@ -1,8 +1,17 @@
 package co.edu.uniquindio.poo;
 
 
+/**
+ * Clase Enum
+ * Contiene todos los enumerables usados en el codigo
+ */
+
 public class Enum {
     
+    /**
+ * Clase Especie
+ */
+
     public enum Especie{
         PERRO,
         GATO,
@@ -11,6 +20,10 @@ public class Enum {
 
     }
 
+    /**
+ * Clase Raza
+ */
+
     public enum Raza{
         SIAMES,
         PITBULL,
@@ -18,10 +31,19 @@ public class Enum {
         OTRO
     }
 
+    /**
+ * Clase Genero
+ */
+
     public enum Genero{
         MACHO,
         HEMBRA
     }
+
+    /**
+ * Clase Color
+ */
+
     public enum Color{
         BLANCO,
         NEGRO,
