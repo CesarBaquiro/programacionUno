@@ -131,4 +131,60 @@ public class AppTest {
         MascotaController.listaMascotas.forEach(System.out::println);
         LOG.info("-----------Finalizando testOrdenAlfabetico-------------");
     }
+
+    /*
+     * Test de ordenamiento de edad descendente
+     */
+    @Test
+    public void testOrdenEdadDescendente() {
+        LOG.info("----------Iniciando testOrdenEdadDescendente-----------");
+
+        MascotaController.crearMascota("0", "Sasuke", Especie.PERRO, Raza.HUSKY, Genero.MACHO, (byte) 4, Color.GRIS,
+                20.6);
+        MascotaController.crearMascota("1", "Pelusa", Especie.GATO, Raza.SIAMES, Genero.HEMBRA, (byte) 2, Color.BLANCO,
+                5.5);
+        MascotaController.crearMascota("2", "Rocky", Especie.PERRO, Raza.BULLDOG, Genero.MACHO, (byte) 11, Color.GRIS,
+                12.0);
+        MascotaController.crearMascota("3", "Ares", Especie.PERRO, Raza.BULLDOG, Genero.MACHO, (byte) 1, Color.GRIS,
+                12.0);
+
+        LOG.info("----------------Listado de mascotas desordenadas---------------");
+        MascotaController.listaMascotas.forEach(System.out::println);
+        // Usamos el metodo que nos ayuda a ordenar
+        MascotaController.ordenarMascotasEdadDescendente();
+
+        LOG.info("----------------Listado de mascotas en orden descendente---------------");
+        MascotaController.listaMascotas.forEach(System.out::println);
+        LOG.info("-----------Finalizando testOrdenEdadDescendente-------------");
+    }
+
+    /*
+     * Test de filtrado de mascotas adultas (Mayores a 10 años)
+     */
+
+    @Test
+    public void testMascotasAdultas() {
+        LOG.info("----------Iniciando testMascotasAdultas-----------");
+
+        MascotaController.crearMascota("0", "Sasuke", Especie.PERRO, Raza.HUSKY, Genero.MACHO, (byte) 4, Color.GRIS,
+                20.6);
+        MascotaController.crearMascota("1", "Pelusa", Especie.GATO, Raza.SIAMES, Genero.HEMBRA, (byte) 2, Color.BLANCO,
+                5.5);
+        MascotaController.crearMascota("2", "Rocky", Especie.PERRO, Raza.BULLDOG, Genero.MACHO, (byte) 11, Color.GRIS,
+                12.0);
+        MascotaController.crearMascota("3", "Ares", Especie.PERRO, Raza.BULLDOG, Genero.MACHO, (byte) 1, Color.GRIS,
+                12.0);
+        MascotaController.crearMascota("4", "Elias", Especie.PERRO, Raza.BULLDOG, Genero.MACHO, (byte) 13, Color.GRIS,
+                12.0);
+
+        LOG.info("----------------Listado de mascotas---------------");
+        MascotaController.listaMascotas.forEach(System.out::println);
+        // Usamos el metodo que nos ayuda a filtrar
+        MascotaController.obtenerMascotasAdultas();
+
+        LOG.info("----------------Listado de mascotas adultas (Mayores a 10 años)---------------");
+        MascotaController.obtenerMascotasAdultas().forEach(System.out::println);
+        LOG.info("-----------Finalizando testMascotasAdultas-------------");
+    }
+
 }
