@@ -28,7 +28,7 @@ public class Enum {
         SIAMES,
         PITBULL,
         HUSKY,
-        OTRO
+        OTRO, BULLDOG
     }
 
     /**
